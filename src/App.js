@@ -20,7 +20,7 @@ class App extends Component {
       <div>
         <header className="App-header">
           <h1 className="App-title">React Table</h1>
-          <Table data={this.state.data}/>
+          <Table users={this.state.data}/>
         </header>
       </div>
     )

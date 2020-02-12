@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Table.css';
 
 class Table extends Component {
+    PropTypes = {
+        users: PropTypes.object
+    }
+
     renderTableHeader() {
         let header = Object.keys(this.props.users[0]);
         return header.map((key, index) => {
@@ -21,6 +26,10 @@ class Table extends Component {
                 </tr>
             )
         })
+    }
+
+    constructor(props) {
+        super(props);
     }
 
     render() {
