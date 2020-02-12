@@ -9,9 +9,10 @@ class Table extends Component {
 
     renderTableHeader() {
         let header = Object.keys(this.props.users[0]);
-        return header.map((key, index) => {
-        return <th key={index} scope="col">{key.toUpperCase()}</th>
-        })
+        header.push('action');
+        return (header.map((key, index) => {
+            return <th key={index} scope="col">{key.toUpperCase()}</th>
+        }));
     }
 
     renderTableData() {
@@ -23,6 +24,7 @@ class Table extends Component {
                     <td>{name}</td>
                     <td>{age}</td>
                     <td>{email}</td>
+                    <td><button type="button" class="btn btn-primary">edit</button></td>
                 </tr>
             )
         })
@@ -34,16 +36,18 @@ class Table extends Component {
 
     render() {
         return (
-            <table className="table table-dark table-dynamic">
-                <thead>
-                    <tr>
-                        {this.renderTableHeader()}
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderTableData()}
-                </tbody>
-            </table>
+            <section className="table-wrapper container">
+                <table className="table table-dark">
+                    <thead>
+                        <tr>
+                            {this.renderTableHeader()}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderTableData()}
+                    </tbody>
+                </table>
+            </section>
         )
     }
 }
