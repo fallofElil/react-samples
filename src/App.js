@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Table from './components/Table/Table';
+import ModalEdit from './components/ModalEdit/ModalEdit';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       data: [
         { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
@@ -18,8 +19,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header className="App-header">
-          <h1 className="App-title">React Table</h1>
+        <header className="app-header">
+          <h1 className="app-title">React Table</h1>
         </header>
         <Table users={this.state.data}/>
       </div>

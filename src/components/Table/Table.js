@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import './Table.css';
 
 class Table extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     PropTypes = {
         users: PropTypes.object
     }
@@ -24,14 +28,22 @@ class Table extends Component {
                     <td>{name}</td>
                     <td>{age}</td>
                     <td>{email}</td>
-                    <td><button type="button" class="btn btn-primary">edit</button></td>
+                    <td><button type="button" className="btn btn-primary">edit</button></td>
                 </tr>
             )
         })
     }
 
-    constructor(props) {
-        super(props);
+    componentWillMount() {
+        console.log('Table component will mount');
+    }
+
+    componentDidMount() {
+        console.log('Table component did mount');
+    }
+
+    componentWillUnmount() {
+        console.log('Table component will unmount');
     }
 
     render() {
