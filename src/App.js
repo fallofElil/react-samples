@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Table from './components/Table/Table';
 import './App.css';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
       <div>
         <header className="App-header">
           <h1 className="App-title">React Table</h1>
+          <Table data={this.state.data}/>
         </header>
       </div>
     )
