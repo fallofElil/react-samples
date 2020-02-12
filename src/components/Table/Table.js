@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import './Table.css';
 
 class Table extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-        }
+    renderTableHeader() {
+        let header = Object.keys(this.props.users[0]);
+        return header.map((key, index) => {
+        return <th key={index} scope="col">{key.toUpperCase()}</th>
+        })
     }
 
     renderTableData() {
-        return this.state.users.map((user, index) => {
-            const { id, name, age, email } = student;
+        return this.props.users.map((user, index) => {
+            const { id, name, age, email } = user;
             return (
-                <tr key={id} scope="row">
+                <tr key={index} scope="row">
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{age}</td>
@@ -24,13 +25,10 @@ class Table extends Component {
 
     render() {
         return (
-            <table className="table table-dark">
+            <table className="table table-dark table-dynamic">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Email</th>
+                        {this.renderTableHeader()}
                     </tr>
                 </thead>
                 <tbody>
@@ -40,3 +38,5 @@ class Table extends Component {
         )
     }
 }
+
+export default Table;
