@@ -1,6 +1,6 @@
 FROM node:alpine
 WORKDIR /app
-COPY . . 
+COPY . .
 RUN yarn run build
 
 FROM node:alpine
