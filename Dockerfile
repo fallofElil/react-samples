@@ -1,10 +1,11 @@
-FROM node:alpine
+FROM node:alpine as react-build
 WORKDIR /app
-COPY . .
+COPY . ./
+RUN yarn install
 RUN yarn run build
 
-FROM node:alpine
-RUN yarn global add serve
-WORKDIR /app
-COPY --from=builder /app/build .
-CMD ["serve", "-p", "80", "-s", "."]
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=react-build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
