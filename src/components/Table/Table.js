@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Table.css';
 
+import ModalEdit from '../ModalEdit/ModalEdit';
+
 class Table extends Component {
     constructor(props) {
         super(props);
+        this.onModalCall = this.onModalCall.bind(this);
     }
 
     PropTypes = {
         users: PropTypes.object
+    }
+
+    onModalCall(user) {
+        console.log(`User id: ${user.id} | user name: ${user.name}`);
+        return (<ModalEdit user={user}/>)
     }
 
     renderTableHeader() {
@@ -28,14 +36,10 @@ class Table extends Component {
                     <td>{name}</td>
                     <td>{age}</td>
                     <td>{email}</td>
-                    <td><button type="button" className="btn btn-primary">edit</button></td>
+                    <td><button type="button" className="btn btn-primary" onClick={() => this.onModalCall(user)}>edit</button></td>
                 </tr>
             )
         })
-    }
-
-    componentWillMount() {
-        console.log('Table component will mount');
     }
 
     componentDidMount() {

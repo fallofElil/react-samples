@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Table from './components/Table/Table';
-import ModalEdit from './components/ModalEdit/ModalEdit';
 import './App.css';
 
 class App extends Component {
